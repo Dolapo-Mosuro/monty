@@ -14,21 +14,21 @@ void my_add(stack_t **head, unsigned int counter)
 
     h = *head;
 
-    // Calculate the length of the stack
+    /* Calculate the length of the stack */
     while (h)
     {
         h = h->next;
         len++;
     }
 
-    // Check if the stack has at least two elements
+    /* Check if the stack has at least two elements */
     if (len < 2)
     {
         fprintf(stderr, "L%d: can't add, stack too short\n", counter);
-        cleanup_and_exit(); // Custom cleanup function to handle errors and exit
+        cleanup_and_exit();
     }
 
-    // Perform the addition and update the stack
+    /* Perform the addition and update the stack */
     h = *head;
     aux = h->n + h->next->n;
     h->next->n = aux;
@@ -43,9 +43,9 @@ void my_add(stack_t **head, unsigned int counter)
  */
 void cleanup_and_exit(void)
 {
-    // Perform any necessary cleanup actions
+    /* Perform any necessary cleanup actions */
 
-    // Close files, free memory, etc.
+    /* Close files, free memory, etc. */
 
     exit(EXIT_FAILURE);
 }
