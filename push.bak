@@ -1,0 +1,44 @@
+#include "monty.h"
+/**
+ *push- function to push an element to a stack
+ *@num: element that gets pushed
+ *Return: nothing
+ */
+void push(stack_t **stack, unsigned int line_number, char *arguement, int sta_que);
+{	
+	char *endptr;
+	long result = strtol(arguement,&endptr,10); 
+	else
+	{
+		current = *stack;
+		new_node = malloc(sizeof(stack_t));
+		if(new_node == NULL)
+		{
+			return (NULL);
+		}
+		if (current == NULL)
+		{
+			new_node->next = current;
+			new_node->prev = current;
+			new_node->n = num;
+			*stack = new_node;
+		}
+		else if (!sta_que)
+		{
+			while(current->next != NULL)
+			{
+				current = current->next;
+			}
+			new_node->n = num;
+			new_node->next = current->next;
+			new_node->prev = current;
+			current->next = new_node;
+		}
+		else
+		{
+			new_node->prev = NULL;
+			new_node->next = current;
+			current->prev = new_node;
+		}
+	}
+}
