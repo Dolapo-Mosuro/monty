@@ -6,43 +6,48 @@
  */
 void push(stack_t **stack, unsigned int line_number)
 {	
-	char *endptr;
 	stack_t *current;
 	stack_t *new_node;
-	int result = strtol(argument,&endptr,10);
-	if (*endptr != '\0')
+	int result;
+
+	if(_isdigit(argument) == 0)
 	{
-		fprintf(stderr,"error");
+		fprintf(stderr,"%d: usage: push integer",line_number);
 	}
-	else
+
+	result = atoi(argument);
+	current = *stack;
+	new_node = malloc(sizeof(stack_t));
+	if(new_node == NULL)
 	{
-		current = *stack;
-		new_node = malloc(sizeof(stack_t));
-		if(new_node == NULL)
-		{
-			return();
-		}
-		if (current == NULL)
-		{
-			new_node->next = current;
-			new_node->prev = current;
-			new_node->n = result;
-			*stack = new_node;
-		}
-		else
-		{ 	/*Case: Insert at the end of the list (like a queue)*/
-    			new_node->n = result;
-    			new_node->next = NULL;
-    			new_node->prev = current;
-    			current->next = new_node;
-		/* Handle case: Insert at the beginning of the list (like a stack)*/
-    		if (current->prev == NULL) 
-		{
-        		new_node->prev = NULL;
-        		new_node->next = current;
-        		current->prev = new_node;
-        		*stack = new_node;
-		}	
+		exit(EXIT_FAILURE);
+	}
+	if (current == NULL)
+	{
+		new_node->next = current;
+		new_node->prev = current;
+		new_node->n = result;
+		*stack = new_node;
+	}
+	else 
+	{
+		new_node->n = result;
+		new_node->prev = NULL;
+		new_node->next = current;
+		current->prev = new_node;
+		*stack = new_node;
 	}
 }
+
+int _isdigit(char *str)
+{
+	char *ptr = str;
+	
+	while(*ptr)
+	{
+		if (*ptr <  '0' || *ptr > '9')
+			return (0);
+		ptr++;
+	}
+	return (1);
 }
