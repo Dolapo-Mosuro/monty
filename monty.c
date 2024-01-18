@@ -29,46 +29,28 @@ int main(int argc, char *argv[])
 
 	stack = NULL;
 	line_number = 0;
-
-
 	op_size = sizeof(op_fun) / sizeof(op_fun[0]);
 
-
 	if (argc != 2)
-	{
-		fprintf(stderr, "USAGE: monty file");
-		exit(EXIT_FAILURE);
-	}
-
+	{fprintf(stderr, "USAGE: monty file");
+		exit(EXIT_FAILURE);}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
-	{
-		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		exit(EXIT_FAILURE);
-	}
+	{fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);}
 
 	while (fgets(line, sizeof(line), fp) != NULL)
-	{
-		line_number++;
+	{line_number++;
 		token = strtok(line, " \n");
 		index = 0;
 		while (index <= 1)
-		{
-			strings[index] = token;
+		{strings[index] = token;
 			index++;
-			token = strtok(NULL, " \n");
-		}
+			token = strtok(NULL, " \n");}
 		argument = strings[1];
 		for (i = 0; i < op_size; i++)
 			if (strcmp(strings[0], op_fun[i].opcode) == 0)
-			{
-				op_fun[i].f(&stack, line_number);
-				break;
-			}
-	}
-
+			{op_fun[i].f(&stack, line_number);
+				break;}}
 	fclose(fp);
-
-	return (0);
-}
-
+	return (0);}
