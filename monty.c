@@ -23,6 +23,7 @@ int main(int argc, char *argv[]) {
     instruction_t op_fun[22]= {
 		{"push", push},
 		{"pall", pall},
+		{"pint", pint},
     };
     
     stack = NULL;
