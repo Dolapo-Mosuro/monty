@@ -10,9 +10,9 @@ void pall(stack_t **stack, unsigned int line_number)
 	stack_t *current;
 
 	current = *stack;
+	(void) line_number;
 	if (current == NULL)
 	{
-		fprintf(stderr, "%d\n", line_number);
 		exit(EXIT_FAILURE);
 
 	}

@@ -14,7 +14,8 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (_isdigit(argument) == 0)
 	{
-		fprintf(stderr, "%d: usage: push integer", line_number);
+		fprintf(stderr, "L%u: usage: push integer", line_number);
+		exit(EXIT_FAILURE);
 	}
 
 	result = atoi(argument);
@@ -48,9 +49,16 @@ void push(stack_t **stack, unsigned int line_number)
  */
 
 int _isdigit(char *str)
-{
-	char *ptr = str;
+{	char *ptr;
+	if (str == NULL)
+	{
+		return(0);
+	}
+	ptr = str;
 
+	if (ptr[0] == '-')
+		ptr++;
+	
 	while (*ptr)
 	{
 		if (*ptr <  '0' || *ptr > '9')
