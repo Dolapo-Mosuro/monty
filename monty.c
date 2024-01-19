@@ -10,9 +10,7 @@ char *argument = NULL;
  */
 int main(int argc, char *argv[])
 {
-	int index;
-	int i;
-	int op_size;
+	int index, i, op_size;
 	char *token;
 	char line[256];
 	char *strings[256];
@@ -60,10 +58,11 @@ int main(int argc, char *argv[])
 			}
 		if (i == op_size)
 		{
-			fprintf(stderr,"L%u: unknown instruction %s\n",line_number,op_fun[i].opcode);
+			fprintf(stderr,"L%u: unknown instruction %s\n",line_number,strings[0]);
 				exit(EXIT_FAILURE);
 		}
 	}
 	fclose(fp);
+	
 	return (0);
 }

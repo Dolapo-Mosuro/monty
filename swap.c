@@ -13,12 +13,12 @@ void swap(stack_t **stack, unsigned int line_number)
 	current = *stack;
 	if (current == NULL)
 	{
-		fprintf(stderr, "L%u\n can't pop an empty stack", line_number);
+		fprintf(stderr, "L%u can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	if (current->next == NULL)
 	{
-		fprintf(stderr,"L%u\n: can't swap, stack too short", line_number);
+		fprintf(stderr,"L%u: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	temp = current->n;
