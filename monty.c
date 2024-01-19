@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 	{fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);}
 
-	while (fgets(line, sizeof(line), fp) != NULL)
+	while (fgets(line, sizeof(line), fp))
 	{line_number++;
 		token = strtok(line, " \n");
 		index = 0;
@@ -49,6 +49,8 @@ int main(int argc, char *argv[])
 		{strings[index] = token;
 			index++;
 			token = strtok(NULL, " \n");}
+		if (strings[0] == NULL)
+			continue;
 		argument = strings[1];
 		for (i = 0; i < op_size; i++)
 			if (strcmp(strings[0], op_fun[i].opcode) == 0)

@@ -14,7 +14,7 @@ void push(stack_t **stack, unsigned int line_number)
 
 	if (_isdigit(argument) == 0)
 	{
-		fprintf(stderr, "L%u\n: usage: push integer", line_number);
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
