@@ -58,9 +58,10 @@ int main(int argc, char *argv[])
 			}
 		if (i == op_size)
 		{
-			fprintf("L%u: unknown instruction %s\n",line_number,op_fun[i])
+			fprintf(stderr,"L%u: unknown instruction %s\n",line_number,op_fun[i].opcode);
 				exit(EXIT_FAILURE);
 		}
 	}
 	fclose(fp);
-	return (0);}
+	return (0);
+}
