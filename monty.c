@@ -20,11 +20,13 @@ int main(int argc, char *argv[])
 	FILE *fp;
 	stack_t *stack;
 
-	instruction_t op_fun[22] = {
+	instruction_t op_fun[] = {
 		{"push", push},
 		{"pall", pall},
 		{"pint", pint},
 		{"pop",pop},
+		{"swap", swap},
+		{"add", add},
 	};
 
 	stack = NULL;
@@ -32,7 +34,7 @@ int main(int argc, char *argv[])
 	op_size = sizeof(op_fun) / sizeof(op_fun[0]);
 
 	if (argc != 2)
-	{fprintf(stderr, "USAGE: monty file");
+	{fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);}
 	fp = fopen(argv[1], "r");
 	if (fp == NULL)
@@ -50,7 +52,15 @@ int main(int argc, char *argv[])
 		argument = strings[1];
 		for (i = 0; i < op_size; i++)
 			if (strcmp(strings[0], op_fun[i].opcode) == 0)
-			{op_fun[i].f(&stack, line_number);
-				break;}}
+			{
+				op_fun[i].f(&stack, line_number);
+				break;
+			}
+		if (i == op_size)
+		{
+			fprintf("L%u: unknown instruction %s\n",line_number,op_fun[i])
+				exit(EXIT_FAILURE);
+		}
+	}
 	fclose(fp);
 	return (0);}
