@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
 	instruction_t op_fun[] = {
 		{"push", push},
 		{"pall", pall},
-		{"pint", pint}
+		{"pint", pint},
 		{"pop", pop},
 		{"swap", swap},
 		{"add", add},
